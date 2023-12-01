@@ -2457,7 +2457,9 @@ class PlayState extends MusicBeatState
 		{
 			if(!cpuControlled) {
 				keyShit();
+			#if desktop
 			} else if(boyfriend.animation.curAnim != null && boyfriend.holdTimer > Conductor.stepCrochet * (0.0011 / FlxG.sound.music.pitch) * boyfriend.singDuration && boyfriend.singing && !boyfriend.animation.curAnim.name.endsWith('miss')) {
+			#end
 				boyfriend.dance();
 				//boyfriend.animation.curAnim.finish();
 			}
@@ -3885,7 +3887,9 @@ class PlayState extends MusicBeatState
 				}
 				#end
 			}
+			#if desktop
 			else if (boyfriend.animation.curAnim != null && boyfriend.holdTimer > Conductor.stepCrochet * (0.0011 / FlxG.sound.music.pitch) * boyfriend.singDuration && boyfriend.singing && !boyfriend.animation.curAnim.name.endsWith('miss'))
+			#end
 			{
 				boyfriend.dance();
 				//boyfriend.animation.curAnim.finish();
