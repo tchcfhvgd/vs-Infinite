@@ -4278,7 +4278,9 @@ class PlayState extends MusicBeatState
 			FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
 		}
 		FlxAnimationController.globalSpeed = 1;
+		#if desktop
 		FlxG.sound.music.pitch = 1;
+		#end
 		super.destroy();
 	}
 
