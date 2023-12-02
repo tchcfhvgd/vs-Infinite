@@ -1117,12 +1117,7 @@ class PlayState extends MusicBeatState
 	{
 		if(generatedMusic)
 		{
-			#if desktop
-			if(vocals != null) vocals.pitch = value;
-			FlxG.sound.music.pitch = value;
-                        #end
-			
-			var ratio:Float = playbackRate / value; //funny word huh
+		        var ratio:Float = playbackRate / value; //funny word huh
 			if(ratio != 1)
 			{
 				for (note in notes) note.resizeByRatio(ratio);
@@ -1686,17 +1681,11 @@ class PlayState extends MusicBeatState
 		vocals.pause();
 
 		FlxG.sound.music.time = time;
-		#if desktop
-		FlxG.sound.music.pitch = playbackRate;
-		#end
 		FlxG.sound.music.play();
 
 		if (Conductor.songPosition <= vocals.length)
 		{
 			vocals.time = time;
-			#if desktop
-			vocals.pitch = playbackRate;
-		        #end
 		}
 		vocals.play();
 		Conductor.songPosition = time;
@@ -1724,9 +1713,6 @@ class PlayState extends MusicBeatState
 		lastReportedPlayheadPosition = 0;
 
 		FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 1, false);
-		#if desktop
-		FlxG.sound.music.pitch = playbackRate;
-		#end
 		FlxG.sound.music.onComplete = finishSong.bind();
 		vocals.play();
 
@@ -1781,9 +1767,6 @@ class PlayState extends MusicBeatState
 		else
 			vocals = new FlxSound();
 
-		#if desktop
-		vocals.pitch = playbackRate;
-		#end
 		FlxG.sound.list.add(vocals);
 		FlxG.sound.list.add(new FlxSound().loadEmbedded(Paths.inst(PlayState.SONG.song)));
 
@@ -2217,15 +2200,9 @@ class PlayState extends MusicBeatState
 		vocals.pause();
 
 		FlxG.sound.music.play();
-		#if desktop
-		FlxG.sound.music.pitch = playbackRate;
-		#end
 		if (FlxG.sound.music.time <= vocals.length)
 		{
 			vocals.time = FlxG.sound.music.time;
-			#if desktop
-			vocals.pitch = playbackRate;
-		        #end
 		}
 		vocals.play();
 	}
