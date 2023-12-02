@@ -158,6 +158,12 @@ class CreditsState extends MusicBeatState
 		bg.color = FlxColor.fromString('#' + creditsStuff[curSelected][4]);
 		intendedColor = bg.color;
 		changeSelection();
+		
+		#if android
+		addVirtualPad(FULL, A_B);
+		addPadCamera();
+		#end
+		
 		super.create();
 	}
 
