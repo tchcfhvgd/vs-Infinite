@@ -2,6 +2,7 @@ package;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.system.FlxSound;
 import flixel.FlxObject;
 import flixel.util.FlxColor;
 import flixel.addons.effects.FlxTrail;
@@ -359,7 +360,7 @@ class Character extends FlxSprite
 				if (singing)
 					holdTimer += elapsed;
 
-				if (holdTimer >= Conductor.stepCrochet * (0.0011 / (FlxG.sound.music != null)) * singDuration)
+				if (holdTimer >= Conductor.stepCrochet * (0.0011 / (FlxG.sound.music != null ? FlxSound.pitch : 1)) * singDuration)
 				{
 					dance();
 					holdTimer = 0;
