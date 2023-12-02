@@ -101,6 +101,11 @@ class InfCreditsState extends MusicBeatState
 		add(descText);
 
 		changeSelection();
+		
+		#if android
+		addVirtualPad(FULL, A_B);
+		#end
+		
 		super.create();
 	}
 
