@@ -20,6 +20,11 @@ class FlashingState extends MusicBeatState
 		disclaimer.setGraphicSize(FlxG.width, FlxG.height);
 		disclaimer.screenCenter();
 		add(disclaimer);
+	
+	        #if android
+		addVirtualPad(NONE, A_B);
+		#end
+	
 	}
 
 	override function update(elapsed:Float)
