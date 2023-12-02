@@ -360,7 +360,7 @@ class Character extends FlxSprite
 				if (singing)
 					holdTimer += elapsed;
 
-				if (holdTimer >= Conductor.stepCrochet * (0.0011 / (FlxG.sound.music != null ? FlxSound.pitch : 1)) * singDuration)
+				if (holdTimer >= Conductor.stepCrochet * 0.0011 * singDuration)
 				{
 					dance();
 					holdTimer = 0;
