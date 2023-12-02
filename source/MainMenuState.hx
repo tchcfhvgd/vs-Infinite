@@ -106,6 +106,10 @@ class MainMenuState extends MusicBeatState
 
 		changeItem();
 
+		#if android
+		addVirtualPad(UP_DOWN, A_B_C);
+		#end
+		
 		super.create();
 	}
 
@@ -135,9 +139,12 @@ class MainMenuState extends MusicBeatState
 				changeItem(1);
 			}
 
-			if (FlxG.keys.justPressed.CONTROL && optionShit[curSelected] == 'story_mode')
+			if (FlxG.keys.justPressed.CONTROL #if android || _virtualpad.buttonC.justPressed #end && optionShit[curSelected] == 'story_mode')
 			{
-				openSubState(new GameplayChangersSubstate());
+			#if android
+			removeVirtualPad();
+			#end
+			        openSubState(new GameplayChangersSubstate());
 			}
 
 			if (controls.BACK)
