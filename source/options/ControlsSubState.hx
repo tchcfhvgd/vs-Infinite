@@ -20,6 +20,7 @@ import flixel.util.FlxSave;
 import haxe.Json;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import flixel.addons.transition.FlxTransitionableState;
 import flixel.util.FlxTimer;
 import flixel.input.keyboard.FlxKey;
 import flixel.graphics.FlxGraphic;
@@ -33,7 +34,6 @@ class ControlsSubState extends MusicBeatSubstate {
 
 	private static var defaultKey:String = 'Reset to Default Keys';
 	private var bindLength:Int = 0;
-
 	var optionShit:Array<Dynamic> = [
 		['NOTES'],
 		['Left', 'note_left'],
@@ -108,6 +108,10 @@ class ControlsSubState extends MusicBeatSubstate {
 			}
 		}
 		changeSelection();
+	
+	        #if android
+		addVirtualPad(UP_DOWN, B);
+		#end
 	}
 
 	var leaving:Bool = false;
@@ -125,9 +129,14 @@ class ControlsSubState extends MusicBeatSubstate {
 			}
 
 			if (controls.BACK) {
-				ClientPrefs.reloadControls();
-				close();
-				FlxG.sound.play(Paths.sound('cancelMenu'));
+			ClientPrefs.reloadControls();
+			#if android
+			FlxTransitionableState.skipNextTransOut = true;
+			FlxG.resetState();
+			#else
+			close();
+			#end
+			FlxG.sound.play(Paths.sound('cancelMenu'));
 			}
 
 			if(controls.ACCEPT && nextAccept <= 0) {
