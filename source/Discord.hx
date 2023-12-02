@@ -1,4 +1,4 @@
-#if desktop
+#if DISCORD_ALLOWED
 package;
 
 import Sys.sleep;
