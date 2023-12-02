@@ -39,6 +39,7 @@ class GameOverSubstate extends MusicBeatSubstate
 	{
 		instance = this;
 		PlayState.instance.callOnLuas('onGameOverStart', []);
+		
 		super.create();
 	}
 
@@ -75,6 +76,11 @@ class GameOverSubstate extends MusicBeatSubstate
 		gayText.screenCenter(X);
 		gayText.alpha = 0;
 		add(gayText);
+	
+	        #if android
+		addVirtualPad(NONE, A_B);
+		addPadCamera();
+		#end
 	}
 
 	var isFollowingAlready:Bool = false;
