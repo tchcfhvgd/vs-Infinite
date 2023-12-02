@@ -171,6 +171,11 @@ class FreeplayState extends MusicBeatState
 		changeSelection(false);
 		changeDiff();
 
+		#if android
+		addVirtualPad(FULL, A_B_X_Y);
+		addPadCamera();
+		#end
+		
 		super.create();
 	}
 
@@ -266,12 +271,15 @@ class FreeplayState extends MusicBeatState
 			MusicBeatState.switchState(new MainMenuState());
 		}
 
-		if(ctrl)
+		if(ctrl #if android || _virtualpad.buttonY.justPressed #end)
 		{
-			persistentUpdate = false;
+			#if android
+			removeVirtualPad();
+			#end
+		        persistentUpdate = false;
 			openSubState(new GameplayChangersSubstate());
 		}
-		else if(space)
+		else if(space #if android || _virtualpad.buttonX.justPressed #end)
 		{
 			if(instPlaying != curSelected)
 			{
