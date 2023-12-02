@@ -856,6 +856,11 @@ class PlayState extends MusicBeatState
 		timeTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
+		#if android
+		addAndroidControls();
+		androidc.visible = false;
+		#end
+		
 		blackScreen = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
 		blackScreen.visible = false;
 		insert(0, blackScreen);
@@ -1453,6 +1458,10 @@ class PlayState extends MusicBeatState
 		if(ret != FunkinLua.Function_Stop) {
 			if (skipCountdown || startOnTime > 0) skipArrowStartTween = true;
 
+			#if android
+			androidc.visible = true;
+			#end
+			
 			generateStaticArrows(0);
 			generateStaticArrows(1);
 			for (i in 0...playerStrums.length) {
