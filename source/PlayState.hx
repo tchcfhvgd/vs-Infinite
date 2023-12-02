@@ -3314,6 +3314,9 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+		#if android
+		androidc.visible = false;
+		#end
 		timeBarBG.visible = false;
 		timeBar.visible = false;
 		timeTxt.visible = false;
@@ -4469,11 +4472,10 @@ class PlayState extends MusicBeatState
 			// Rating FC
 			ratingFC = "";
 
-			if (!validScore) ratingFC = "Invalid";
-			else if (sicks > 0) ratingFC = "SFC";
-			else if (goods > 0) ratingFC = "GFC";
-			else if (bads > 0 || shits > 0) ratingFC = "FC";
-			else if (songMisses > 0 && songMisses < 10) ratingFC = "SDCB";
+			if (sicks > 0) ratingFC = "SFC";
+			if (goods > 0) ratingFC = "GFC";
+			if (bads > 0 || shits > 0) ratingFC = "FC";
+			if (songMisses > 0 && songMisses < 10) ratingFC = "SDCB";
 			else if (songMisses >= 10) ratingFC = "Clear";
 		}
 
