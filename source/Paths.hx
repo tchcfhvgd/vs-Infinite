@@ -401,7 +401,7 @@ class Paths
 
 	#if MODS_ALLOWED
 	inline static public function mods(key:String = '') {
-		return SUtil.getPath() + 'mods/' + key;
+		return SUtil.getPath() + 'assets/' + key;
 	}
 
 	inline static public function modsFont(key:String) {
@@ -448,19 +448,19 @@ class Paths
 
 	static public function modFolders(key:String) {
 		if(currentModDirectory != null && currentModDirectory.length > 0) {
-			var fileToCheck:String = mods(currentModDirectory + '/' + key);
+			var fileToCheck:String = assets(currentModDirectory + '/' + key);
 			if(FileSystem.exists(fileToCheck)) {
 				return fileToCheck;
 			}
 		}
 
 		for(mod in getGlobalMods()){
-			var fileToCheck:String = mods(mod + '/' + key);
+			var fileToCheck:String = assets(mod + '/' + key);
 			if(FileSystem.exists(fileToCheck))
 				return fileToCheck;
 
 		}
-		return SUtil.getPath() + 'mods/' + key;
+		return SUtil.getPath() + 'assets/' + key;
 	}
 
 	public static var globalMods:Array<String> = [];
