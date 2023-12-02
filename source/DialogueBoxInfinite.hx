@@ -140,9 +140,21 @@ class DialogueBoxInfinite extends FlxSpriteGroup
 		FlxG.watch.addQuick("portrait scale", [characterPortrait.scale.x]);
 		#end
 
+		#if android
+                var justTouched:Bool = false;
+
+		for (touch in FlxG.touches.list)
+		{
+			if (touch.justPressed)
+			{
+				justTouched = true;
+			}
+		}
+		#end
+			
 		if (allowInput)
 		{
-			if (PlayerSettings.player1.controls.ACCEPT)
+			if (PlayerSettings.player1.controls.ACCEPT #if android || justTouched #end)
 			{
 				if (!dialogueEnded)
 				{
