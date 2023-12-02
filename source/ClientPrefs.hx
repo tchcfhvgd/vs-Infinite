@@ -38,7 +38,7 @@ class ClientPrefs {
 	public static var comboStacking = false;
 	public static var autoPause:Bool = false;
 	public static var noteCamera:Bool = true;
-	public static var hitboxmode:String = 'Classic';  //starting new way to change between hitboxes yay
+	public static var hitboxmode:String = 'New';  //starting new way to change between hitboxes yay
 	public static var hitboxalpha:Float = 0.2; 
 	public static var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
