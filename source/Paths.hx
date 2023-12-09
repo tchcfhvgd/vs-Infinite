@@ -334,7 +334,7 @@ class Paths
 
 	// completely rewritten asset loading? fuck!
 	public static var currentTrackedAssets:Map<String, FlxGraphic> = [];
-	public static function returnGraphic(key:String, ?library:String) {
+	public static function returnGrapic(key:String, ?library:String) {
 		#if MODS_ALLOWED
 		var modKey:String = modsImages(key);
 		if(FileSystem.exists(modKey)) {
